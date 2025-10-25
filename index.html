@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa para Geral 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+        
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            transition: background 1.5s ease;
+            position: relative;
+        }
+        
+        .bg-0 { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); }
+        .bg-1 { background: linear-gradient(135deg, #fa709a 0%, #fee140 50%, #ffa751 100%); }
+        .bg-2 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 50%, #43e97b 100%); }
+        .bg-3 { background: linear-gradient(135deg, #fa709a 0%, #f093fb 50%, #764ba2 100%); }
+        .bg-4 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%); }
+        .bg-5 { background: linear-gradient(135deg, #fa8bff 0%, #2bd2ff 50%, #2bff88 100%); }
+        .bg-6 { background: linear-gradient(135deg, #ff6a88 0%, #ff99ac 50%, #ffa94d 100%); }
+        .bg-7 { background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 50%, #3494e6 100%); }
+        .bg-8 { background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 50%, #667eea 100%); }
+        .bg-9 { background: linear-gradient(135deg, #eb3349 0%, #f45c43 50%, #fb8c00 100%); }
+        .bg-10 { background: linear-gradient(135deg, #667eea 0%, #f093fb 50%, #fa709a 100%); }
+        .bg-11 { background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 25%, #c44569 50%, #f093fb 75%, #667eea 100%); }
+        
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .floating-text {
+            position: absolute;
+            color: white;
+            font-weight: 600;
+            opacity: 0.12;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .floating-text.hashtag {
+            font-size: 2rem;
+            font-family: 'Pacifico', cursive;
+        }
+        
+        .floating-text.date {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .floating-heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .floating-heart:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 15s; }
+        .floating-heart:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 18s; }
+        .floating-heart:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 14s; }
+        .floating-heart:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 16s; }
+        .floating-heart:nth-child(6) { left: 80%; animation-delay: 5s; animation-duration: 13s; }
+        .floating-heart:nth-child(7) { left: 90%; animation-delay: 6s; animation-duration: 17s; }
+        
+        .floating-text:nth-child(8) { left: 15%; animation-delay: 1s; animation-duration: 14s; }
+        .floating-text:nth-child(9) { left: 40%; animation-delay: 3s; animation-duration: 16s; }
+        .floating-text:nth-child(10) { left: 70%; animation-delay: 5s; animation-duration: 13s; }
+        .floating-text:nth-child(11) { left: 25%; animation-delay: 2s; animation-duration: 17s; }
+        .floating-text:nth-child(12) { left: 60%; animation-delay: 4s; animation-duration: 15s; }
+        .floating-text:nth-child(13) { left: 85%; animation-delay: 6s; animation-duration: 14s; }
+        .floating-text:nth-child(14) { left: 5%; animation-delay: 7s; animation-duration: 16s; }
+        .floating-text:nth-child(15) { left: 45%; animation-delay: 1.5s; animation-duration: 18s; }
+        .floating-text:nth-child(16) { left: 75%; animation-delay: 3.5s; animation-duration: 13s; }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+        
+        .confetti {
+            position: absolute;
+            opacity: 1;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            opacity: 1;
+        }
+        
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0.3;
+            }
+        }
+        
+        @keyframes firework-burst {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .firework-circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 3px solid;
+            animation: firework-burst 1s ease-out forwards;
+        }
+        
+        .header {
+            position: absolute;
+            top: 30px;
+            text-align: center;
+            animation: fadeInDown 1s ease-out;
+            z-index: 10;
+        }
+        
+        .name-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .name {
+            font-size: 6rem;
+            font-weight: bold;
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(45deg, #fff, #ffd1dc, #fff, #e0bbff, #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.8)) drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            letter-spacing: 0.15em;
+            margin-bottom: 15px;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .name-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: pulse-glow 2s ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+        
+        .sparkle-decoration {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            animation: sparkle-rotate 3s linear infinite;
+        }
+        
+        .sparkle-top-left { top: -15px; left: -15px; }
+        .sparkle-top-right { top: -15px; right: -15px; animation-delay: 1s; }
+        .sparkle-bottom-left { bottom: -15px; left: -15px; animation-delay: 2s; }
+        .sparkle-bottom-right { bottom: -15px; right: -15px; animation-delay: 1.5s; }
+        
+        @keyframes sparkle-rotate {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 1; }
+            25% { transform: rotate(90deg) scale(1.2); opacity: 0.8; }
+            50% { transform: rotate(180deg) scale(1); opacity: 1; }
+            75% { transform: rotate(270deg) scale(1.2); opacity: 0.8; }
+        }
+        
+        .hearts-top {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .heart {
+            width: 22px;
+            height: 22px;
+            filter: drop-shadow(0 2px 8px rgba(255,255,255,0.5));
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        .heart:nth-child(2) { animation-delay: 0.3s; }
+        .heart:nth-child(3) { animation-delay: 0.6s; }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20% { transform: scale(0.95); }
+        }
+        
+        .counters-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .counter {
+            background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.1) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            min-width: 320px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .counter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        
+        .counter-title {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-align: center;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .counter-display {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            color: white;
+        }
+        
+        .counter-item {
+            text-align: center;
+        }
+        
+        .counter-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+        }
+        
+        .counter-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 300;
+            margin-top: 2px;
+        }
+        
+        .counter-separator {
+            font-size: 2.2rem;
+            font-weight: 700;
+            align-self: center;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
+        }
+        
+        .content {
+            text-align: center;
+            margin-top: 220px;
+            animation: fadeInUp 1s ease-out;
+            z-index: 10;
+        }
+        
+        .icon-container {
+            margin-bottom: 50px;
+            animation: bounce-smooth 2s ease-in-out infinite;
+        }
+        
+        @keyframes bounce-smooth {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+        
+        .icon {
+            width: 120px;
+            height: 120px;
+            filter: drop-shadow(0 15px 35px rgba(0,0,0,0.4));
+        }
+        
+        .message-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-radius: 35px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,1);
+            margin-bottom: 40px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            max-width: 650px;
+            border: 2px solid rgba(255,255,255,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(0deg) translate(-50%, -50%); }
+            100% { transform: rotate(360deg) translate(-50%, -50%); }
+        }
+        
+        .message-box:hover {
+            transform: scale(1.03);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,1);
+        }
+        
+        .message {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #d946ef, #ec4899, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 35px;
+            animation: text-pulse 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .message.final {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #db2777, #dc2626, #9333ea, #7c3aed);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 3s ease infinite;
+            font-weight: 800;
+        }
+        
+        @keyframes text-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .hearts-message {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .heart-message {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 4px 10px rgba(239, 68, 68, 0.5));
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        .heart-message:nth-child(2) { animation-delay: 0.2s; }
+        .heart-message:nth-child(3) { animation-delay: 0.4s; }
+        .heart-message:nth-child(4) { animation-delay: 0.6s; }
+        .heart-message:nth-child(5) { animation-delay: 0.8s; }
+        
+        button {
+            background: linear-gradient(135deg, #ec4899, #f97316);
+            color: white;
+            font-weight: 700;
+            font-size: 1.6rem;
+            padding: 22px 55px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            letter-spacing: 0.05em;
+        }
+        
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        button:hover::before {
+            left: 100%;
+        }
+        
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        
+        button:active {
+            transform: scale(1.02);
+        }
+        
+        .final-button {
+            background: linear-gradient(135deg, #ef4444, #ec4899, #8b5cf6);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4), inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+        
+        .final-button:hover {
+            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+        
+        .restart-text {
+            color: #666;
+            font-size: 0.95rem;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+        
+        .sparkles {
+            display: flex;
+            justify-center;
+            gap: 12px;
+        }
+        
+        .sparkle {
+            width: 22px;
+            height: 22px;
+            filter: drop-shadow(0 2px 8px rgba(254, 240, 138, 0.6));
+            animation: sparkle-pulse 1.5s ease-in-out infinite;
+        }
+        
+        .sparkle:nth-child(2) { animation-delay: 0.15s; }
+        .sparkle:nth-child(3) { animation-delay: 0.3s; }
+        .sparkle:nth-child(4) { animation-delay: 0.45s; }
+        .sparkle:nth-child(5) { animation-delay: 0.6s; }
+        .sparkle:nth-child(6) { animation-delay: 0.75s; }
+        .sparkle:nth-child(7) { animation-delay: 0.9s; }
+        
+        @keyframes sparkle-pulse {
+            0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+            50% { opacity: 0.6; transform: scale(1.2) rotate(180deg); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .name { font-size: 4rem; }
+            .message { font-size: 2rem; }
+            .message.final { font-size: 2.5rem; }
+            .message-box { padding: 40px 30px; }
+            .counter-number { font-size: 1.8rem; }
+            .counter-title { font-size: 0.95rem; }
+            .counters-container { flex-direction: column; }
+            .counter { min-width: auto; width: 100%; }
+            button { font-size: 1.3rem; padding: 18px 45px; }
+            .icon { width: 90px; height: 90px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="confettiContainer" class="confetti-container"></div>
+    
+    <div id="container" class="container bg-0">
+        <div class="floating-hearts">
+            <svg class="floating-heart" width="60" height="60" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <svg class="floating-heart" width="50" height="50" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <svg class="floating-heart" width="70" height="70" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <svg class="floating-heart" width="55" height="55" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <svg class="floating-heart" width="65" height="65" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <svg class="floating-heart" width="45" height="45" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            <svg class="floating-heart" width="60" height="60" fill="#ffffff" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            
+            <div class="floating-text hashtag">#geriguel</div>
+            <div class="floating-text date">31/05</div>
+            <div class="floating-text date">24/08</div>
+            <div class="floating-text hashtag">#geriguel</div>
+            <div class="floating-text date">31/05</div>
+            <div class="floating-text date">24/08</div>
+            <div class="floating-text hashtag">#geriguel</div>
+            <div class="floating-text date">31/05</div>
+            <div class="floating-text date">24/08</div>
+        </div>
+        
+        <div class="header">
+            <div class="name-container">
+                <div class="name-glow"></div>
+                <svg class="sparkle-decoration sparkle-top-left" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle-decoration sparkle-top-right" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <h1 class="name">Geral</h1>
+                <svg class="sparkle-decoration sparkle-bottom-left" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle-decoration sparkle-bottom-right" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+            </div>
+            <div class="hearts-top">
+                <svg class="heart" fill="#fbcfe8" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <svg class="heart" fill="#ffffff" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+                <svg class="heart" fill="#fbcfe8" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+            </div>
+            <div class="counters-container">
+                <div class="counter">
+                    <div class="counter-title">Te conozco</div>
+                    <div class="counter-display">
+                        <div class="counter-item">
+                            <div class="counter-number" id="days-met">0</div>
+                            <div class="counter-label">Días</div>
+                        </div>
+                        <div class="counter-separator">:</div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="hours-met">00</div>
+                            <div class="counter-label">Horas</div>
+                        </div>
+                        <div class="counter-separator">:</div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="minutes-met">00</div>
+                            <div class="counter-label">Min</div>
+                        </div>
+                        <div class="counter-separator">:</div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="seconds-met">00</div>
+                            <div class="counter-label">Seg</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="counter">
+                    <div class="counter-title">Estamos juntos</div>
+                    <div class="counter-display">
+                        <div class="counter-item">
+                            <div class="counter-number" id="days-together">0</div>
+                            <div class="counter-label">Días</div>
+                        </div>
+                        <div class="counter-separator">:</div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="hours-together">00</div>
+                            <div class="counter-label">Horas</div>
+                        </div>
+                        <div class="counter-separator">:</div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="minutes-together">00</div>
+                            <div class="counter-label">Min</div>
+                        </div>
+                        <div class="counter-separator">:</div>
+                        <div class="counter-item">
+                            <div class="counter-number" id="seconds-together">00</div>
+                            <div class="counter-label">Seg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="icon-container" id="iconContainer"></div>
+            
+            <div class="message-box">
+                <h1 class="message" id="message">Hola mi amor ❤️</h1>
+                <div class="hearts-message" id="heartsMessage"></div>
+                <button id="actionButton" onclick="nextStep()">Haz clic aquí</button>
+                <p class="restart-text" id="restartText" style="display: none;">Haz clic para volver a empezar 🔄</p>
+            </div>
+            
+            <div class="sparkles">
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+                <svg class="sparkle" fill="#fef08a" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        
+        const steps = [
+            {
+                message: "Hola mi amor ❤️",
+                buttonText: "Haz clic aquí",
+                icon: "heart",
+                hearts: 3
+            },
+            {
+                message: "Tengo algo especial para ti...",
+                buttonText: "Siguiente →",
+                icon: "sparkle",
+                hearts: 3
+            },
+            {
+                message: "Cada día contigo es mágico ✨",
+                buttonText: "Continuar",
+                icon: "star",
+                hearts: 3
+            },
+            {
+                message: "Te has vuelto mi persona favorita en el mundo 🌎",
+                buttonText: "Siguiente",
+                icon: "heart",
+                hearts: 4
+            },
+            {
+                message: "60 días de risas, momentos increíbles y mil razones para quererte 📸",
+                buttonText: "Continuar →",
+                icon: "sparkle",
+                hearts: 4
+            },
+            {
+                message: "No puedo imaginar vivir de otra manera que no sea sonriendo a tu lado 😊",
+                buttonText: "Siguiente",
+                icon: "heart",
+                hearts: 4
+            },
+            {
+                message: "Cada segundo contigo vale más que toda una vida en otro lugar 💫",
+                buttonText: "Continuar",
+                icon: "star",
+                hearts: 4
+            },
+            {
+                message: "Contigo descubrí que el amor es en los detalles más simples 💝",
+                buttonText: "Siguiente →",
+                icon: "heart",
+                hearts: 4
+            },
+            {
+                message: "Gracias por enseñarme que el amor es paciencia y empatía ✨",
+                buttonText: "Casi llegamos...",
+                icon: "sparkle",
+                hearts: 4
+            },
+            {
+                message: "Han sido los mejores días 💫",
+                buttonText: "Una más...",
+                icon: "heart",
+                hearts: 3
+            },
+            {
+                message: "Y esto es solo el comienzo 🌟",
+                buttonText: "¡Ver la sorpresa!",
+                icon: "sparkle",
+                hearts: 3
+            },
+            {
+                message: "¡FELIZ 2 MESES MI PRINCESA! 👑💖",
+                buttonText: "❤️ Te amo ❤️",
+                icon: "heart",
+                hearts: 5,
+                isFinal: true
+            }
+        ];
+        
+        function getMonthsTogether() {
+            const togetherDate = new Date('2025-08-24T00:00:00');
+            const now = new Date();
+            
+            const yearsDiff = now.getFullYear() - togetherDate.getFullYear();
+            const monthsDiff = now.getMonth() - togetherDate.getMonth();
+            let totalMonths = (yearsDiff * 12) + monthsDiff;
+            
+            // Si aún no llegamos al día 24 del mes actual, restamos 1 mes
+            if (now.getDate() < 24) {
+                totalMonths = totalMonths - 1;
+            }
+            
+            return Math.max(totalMonths, 1);
+        }
+        
+        function updateCounter() {
+            const metDate = new Date('2025-05-31T00:00:00');
+            const togetherDate = new Date('2025-08-24T00:00:00');
+            const now = new Date();
+            
+            const diffMet = now - metDate;
+            const daysMet = Math.floor(diffMet / (1000 * 60 * 60 * 24));
+            const hoursMet = Math.floor((diffMet % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesMet = Math.floor((diffMet % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsMet = Math.floor((diffMet % (1000 * 60)) / 1000);
+            
+            document.getElementById('days-met').textContent = daysMet;
+            document.getElementById('hours-met').textContent = String(hoursMet).padStart(2, '0');
+            document.getElementById('minutes-met').textContent = String(minutesMet).padStart(2, '0');
+            document.getElementById('seconds-met').textContent = String(secondsMet).padStart(2, '0');
+            
+            const diffTogether = now - togetherDate;
+            const daysTogether = Math.floor(diffTogether / (1000 * 60 * 60 * 24));
+            const hoursTogether = Math.floor((diffTogether % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesTogether = Math.floor((diffTogether % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsTogether = Math.floor((diffTogether % (1000 * 60)) / 1000);
+            
+            document.getElementById('days-together').textContent = daysTogether;
+            document.getElementById('hours-together').textContent = String(hoursTogether).padStart(2, '0');
+            document.getElementById('minutes-together').textContent = String(minutesTogether).padStart(2, '0');
+            document.getElementById('seconds-together').textContent = String(secondsTogether).padStart(2, '0');
+        }
+        
+        function createConfettiExplosion(x, y) {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ff6b6b', '#ee5a6f', '#f06595', '#cc5de8', '#845ef7', '#5c7cfa', '#339af0', '#22b8cf', '#20c997', '#51cf66', '#94d82d', '#ffd43b', '#ffa94d', '#ff922b'];
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.backgroundColor = color;
+                confetti.style.left = x + 'px';
+                confetti.style.top = y + 'px';
+                
+                const size = Math.random() * 12 + 6;
+                const isSquare = Math.random() > 0.3;
+                confetti.style.width = size + 'px';
+                confetti.style.height = isSquare ? size + 'px' : (size * 2) + 'px';
+                confetti.style.borderRadius = Math.random() > 0.6 ? '50%' : '2px';
+                
+                const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5);
+                const velocity = Math.random() * 200 + 150;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                const duration = Math.random() * 1 + 1.5;
+                confetti.style.animation = `explode ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+                confetti.style.transform = `translate(${vx}px, ${vy}px) rotate(${Math.random() * 720}deg)`;
+                
+                container.appendChild(confetti);
+                setTimeout(() => confetti.remove(), duration * 1000);
+            }
+        }
+        
+        function createFirework(x, y) {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#ff6b6b', '#ffd43b', '#51cf66', '#339af0', '#845ef7', '#f06595'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const circle = document.createElement('div');
+                    circle.className = 'firework-circle';
+                    circle.style.left = (x - 50) + 'px';
+                    circle.style.top = (y - 50) + 'px';
+                    circle.style.width = '100px';
+                    circle.style.height = '100px';
+                    circle.style.borderColor = color;
+                    circle.style.animationDelay = (i * 0.1) + 's';
+                    
+                    container.appendChild(circle);
+                    setTimeout(() => circle.remove(), 1200);
+                }, i * 100);
+            }
+            
+            const sparkCount = 30;
+            for (let i = 0; i < sparkCount; i++) {
+                setTimeout(() => {
+                    const spark = document.createElement('div');
+                    spark.className = 'firework';
+                    spark.style.left = x + 'px';
+                    spark.style.top = y + 'px';
+                    spark.style.backgroundColor = color;
+                    spark.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}`;
+                    
+                    const angle = (Math.PI * 2 * i) / sparkCount;
+                    const velocity = Math.random() * 150 + 100;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity;
+                    
+                    spark.style.animation = `explode 1.2s ease-out forwards`;
+                    spark.style.transform = `translate(${vx}px, ${vy}px)`;
+                    
+                    container.appendChild(spark);
+                    setTimeout(() => spark.remove(), 1200);
+                }, Math.random() * 100);
+            }
+        }
+        
+        function createCelebration() {
+            setTimeout(() => {
+                createConfettiExplosion(window.innerWidth / 2, window.innerHeight / 2);
+            }, 100);
+            
+            for (let i = 0; i < 8; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
+                    const y = Math.random() * window.innerHeight * 0.6 + window.innerHeight * 0.1;
+                    createFirework(x, y);
+                }, i * 400 + 500);
+            }
+            
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
+                    const y = Math.random() * window.innerHeight * 0.7 + window.innerHeight * 0.1;
+                    createConfettiExplosion(x, y);
+                }, i * 600 + 800);
+            }
+            
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth * 0.8 + window.innerWidth * 0.1;
+                    const y = Math.random() * window.innerHeight * 0.5 + window.innerHeight * 0.1;
+                    createFirework(x, y);
+                }, i * 500 + 3000);
+            }
+            
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    const colors = ['#ff6b6b', '#ee5a6f', '#f06595', '#cc5de8', '#845ef7', '#5c7cfa', '#339af0', '#22b8cf', '#20c997', '#51cf66', '#94d82d', '#ffd43b', '#ffa94d', '#ff922b'];
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-20px';
+                    
+                    const size = Math.random() * 10 + 5;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    
+                    const duration = Math.random() * 2 + 2;
+                    confetti.style.animation = `confetti-fall ${duration}s linear forwards`;
+                    
+                    document.getElementById('confettiContainer').appendChild(confetti);
+                    setTimeout(() => confetti.remove(), duration * 1000);
+                }, i * 50);
+            }
+        }
+        
+        function clearConfetti() {
+            const container = document.getElementById('confettiContainer');
+            container.innerHTML = '';
+        }
+        
+        function getIconSVG(iconType) {
+            if (iconType === 'heart') {
+                return `<svg class="icon" fill="#ffffff" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>`;
+            } else if (iconType === 'sparkle') {
+                return `<svg class="icon" fill="#ffffff" viewBox="0 0 24 24">
+                    <path d="M12 2l2.4 7.2L22 12l-7.6 2.8L12 22l-2.4-7.2L2 12l7.6-2.8L12 2z"/>
+                </svg>`;
+            } else if (iconType === 'star') {
+                return `<svg class="icon" fill="#ffffff" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>`;
+            }
+        }
+        
+        function updateStep() {
+            const step = steps[currentStep];
+            const container = document.getElementById('container');
+            const message = document.getElementById('message');
+            const button = document.getElementById('actionButton');
+            const iconContainer = document.getElementById('iconContainer');
+            const heartsMessage = document.getElementById('heartsMessage');
+            const restartText = document.getElementById('restartText');
+            
+            container.className = `container bg-${currentStep}`;
+            
+            // Si es la última tarjeta, actualizar el mensaje con los meses dinámicamente
+            if (step.isFinal) {
+                const monthsTogether = getMonthsTogether();
+                message.textContent = `¡FELIZ ${monthsTogether} MESES MI PRINCESA! 👑💖`;
+            } else {
+                message.textContent = step.message;
+            }
+            
+            message.className = step.isFinal ? 'message final' : 'message';
+            button.textContent = step.buttonText;
+            button.className = step.isFinal ? 'final-button' : '';
+            iconContainer.innerHTML = getIconSVG(step.icon);
+            
+            heartsMessage.innerHTML = '';
+            for (let i = 0; i < step.hearts; i++) {
+                heartsMessage.innerHTML += `<svg class="heart-message" fill="#ef4444" viewBox="0 0 24 24">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>`;
+            }
+            
+            if (step.isFinal) {
+                restartText.style.display = 'block';
+                createCelebration();
+            } else {
+                restartText.style.display = 'none';
+                clearConfetti();
+            }
+        }
+        
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateStep();
+            } else {
+                currentStep = 0;
+                updateStep();
+            }
+        }
+        
+        updateCounter();
+        setInterval(updateCounter, 1000);
+        updateStep();
+    </script>
+</body>
+</html>
